@@ -1,113 +1,40 @@
 package problems.string;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-//TODO
 /*
-    > problem: Find All Anagrams in a String
-*/
-
+ * > PROBLEM 438 (medium): Find All Anagrams in a String
+ *   Given two strings "s" and "p", return an array of all the start 
+ *   indicies of p's anagrams in s. You may return the answer in any order.
+ * 
+ *   An Anagram is a word or phrase formed by rearranging the letters of a 
+ *   different word or phrase, typically using all the original letters exactly once.
+ * 
+ * > SOLUTION: 
+ *   Classic sliding window solution. The first window of s is from zero to 
+ *   p.length()-1. 
+ *   For each char in the window and for each char in w we store how many times 
+ *   that char appear in p and in the window w. 
+ *   If the char occurrences of the window and of p are equals than the window 
+ *   is an anagram of p in s and we store the start of the window. 
+ *   We let slide the window by one, removing one occurrence of the old start 
+ *   and adding one occurence of the new last char of the window, then we check again
+ *   if the window is an anagram and we loop.
+ */
 public class FAAiaS {
-
     public static void main(String[] args) {
-        
+        assert(solution("cbaebabacd", "abc").equals(Arrays.asList(new int[]{0,6})));
+        assert(solution("abab", "ab").equals(Arrays.asList(new int[]{0,1,2})));
     }
     
-    //#region my dumb solution: may work but it is too tricky
-    public static List<Integer> myDumbSolution(String s, String p){
-        List<Integer> indexes = new ArrayList<>();
-        Map<Character, Integer[]> pDict = new HashMap<>();
-        
-        for(int i = 0; i < p.length(); i++){
-            if(pDict.containsKey(p.charAt(i))){
-                Integer[] value = pDict.get(p.charAt(i));
-                value[0]++;
-                value[1] = value[0];
-            }
-            else
-                pDict.put(p.charAt(i), new Integer[]{1,1});
-        }
-        
-        int i = 0;
-        while(i <= s.length() - p.length()){
-            int j = i; 
-            boolean failed = false;
-            while(j - i < p.length()){
-                if(pDict.containsKey(s.charAt(j))){
-                    Integer[] value = pDict.get(s.charAt(j));
-                    value[0]--;
-                    j++;
-                }else{
-                    //abs needed eg: s = aa, p = bb
-                    //pDict dont contain b, i = 0 + j = 0 - 1 = -1
-                    //s.charAt(-1) => exception
-                    i = j+1;
-                    failed = true;
-                    break;
-                }
-            }
-
-            if(!failed){ 
-                if(checkAnagram(pDict))
-                    indexes.add(i);
-                i++;
-            }else
-                checkAnagram(pDict);
-        }
-        return indexes;
-    }
-
-    //also reset the right counter
-    private static boolean checkAnagram(Map<Character, Integer[]> pDict){
-        boolean check = true;
-        for(Character c : pDict.keySet()){
-            Integer[] value = pDict.get(c);
-            if(value[0] != 0)
-                check = false;
-            value[0] = value[1];
-        }
-        return check;
-    }
-    //#endregion
-    //#region a dumb solution: works but too slow for leetcode
-    public static List<Integer> sndDumbSolution(String s, String p){
-        List<Integer> result = new ArrayList<>();
-        Map<Character, Integer> pCharOccurrences = createMap(p);
-        Map<Character, Integer> subSCharOccurrences = null;
-
-        for(int i = 0; i < s.length() - p.length()+1; i++){
-            subSCharOccurrences = createMap(s.substring(i, i+p.length()));
-            if(pCharOccurrences.equals(subSCharOccurrences))
-                result.add(i);
-        }
-
-        return result;
-    }
-
-    private static Map<Character, Integer> createMap(String s){
-        Map<Character, Integer> map = new HashMap<>();
-        for(Character c : s.toCharArray())
-            if(map.containsKey(c))
-                map.put(c, map.get(c)+1);
-            else
-                map.put(c, 1);
-        return map;
-    }
-    //#endregion
-    
-    
-    //#region solution
-    public List<Integer> solution(String s, String p) {
+    public static List<Integer> solution(String s, String p) {
         List<Integer> result = new ArrayList<>();
         if(s.length() < p.length())
             return result;
 
-        //for each char how many times it appear in p
+        // for each char how many times it appear in p
         int pCharCount[] = new int[26];
-        //for each car how many times it appear in the window 
+        //for each char how many times it appear in the window 
         int wCharCount[] = new int[26];
 
         //first window
@@ -117,10 +44,10 @@ public class FAAiaS {
         //count both the occurrences of the 
         //chars in s and the chars in the window
         for(int i = start; i <= end; i++){
-            //'a' has a certain int value, 'b' = 'a'+1, 'c' = 'b' + 1 = 'a' + 2 ...
             pCharCount[s.charAt(i) - 'a']++;
             wCharCount[p.charAt(i) - 'a']++;
         }
+
         //if every char in the window occours as much as it appears in the 
         //string p than the window is an anagram of p
         if(Arrays.equals(pCharCount, wCharCount))
@@ -141,9 +68,7 @@ public class FAAiaS {
             
             if(Arrays.equals(pCharCount,wCharCount))
                 result.add(start);
-
         }
         return result;  
     }
-    //#endregion solution
 }

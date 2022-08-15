@@ -1,16 +1,12 @@
 package datastructures.trie;
-
 import org.junit.Test;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TrieUnitTest {
-
     @Test
     public void whenEmptyTrie_thenNoElements() {
         Trie trie = new Trie();
-
         assertFalse(trie.isEmpty());
     }
 

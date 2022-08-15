@@ -1,25 +1,27 @@
 package problems.array;
-
 import java.util.HashSet;
 import java.util.Set;
-
 /*
-    > problem: Longest Consecutive Sequence
-    Given an unsorted array of integers "nums" return the length 
-    of the longest consecutive elements sequence. 
-    You must write an algorithm that runs in O(n) time
-
-    > idea: we exploit the fast lookup of the set to run in O(n). 
-    We take the length of elements going up, it means that if the current 
-    element -1 is also in the set we skip and wait until we find it. 
-    If an element is present in the set we increment the current length of the 
-    sequence to 1, we update the current element to the current element +1 and look
-    it up on the set, and so on. 
-*/
+ * > PROBLEM 128 (medium): Longest Consecutive Sequence
+ *   Given an unsorted array of integers "nums" return the length 
+ *   of the longest consecutive elements sequence. 
+ *   You must write an algorithm that runs in O(n) time
+ * 
+ * > SOLUTION: 
+ *   We exploit the fast lookup of the set to run in O(n). 
+ *   We take the length of elements going up, it means that if the current 
+ *   element -1 is also in the set we skip and wait until we find it. 
+ *   If an element is present in the set we increment the current length of the 
+ *   sequence to 1, we update the current element to the current element +1 and look
+ *   it up on the set, and so on. 
+ */
 public class LCS {
-    
-    //TODO MAIN
-    public int solution(int[] nums){
+    public static void main(String[] args) {
+        assert(solution(new int[]{100,4,200,1,3,2}) == 4);
+        assert(solution(new int[]{0,3,7,2,5,8,4,6,0,1}) == 9);
+    }
+
+    public static int solution(int[] nums){
         int maxLength = 0;
         Set<Integer> numbers = new HashSet<>();
 
@@ -44,7 +46,6 @@ public class LCS {
             }
             maxLength = Math.max(maxLength, currentLength);
         }
-
         return maxLength;
     }
 }

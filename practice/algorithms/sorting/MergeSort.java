@@ -1,5 +1,4 @@
 package algorithms.sorting;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +17,7 @@ public class MergeSort {
         testCases.add(new int[] {4, 3, 2, 1});                      //reverse sorted array
         testCases.add(new int[] {2, 1, 4, 5, 9, 2, 3, 6, 7, 21});   //real case
 
-        //test of int merge sort
+        // test of int merge sort
         for(int[] testCase : testCases){
             System.out.println("before sorting: " + Arrays.toString(testCase));
             sort(testCase, 0, testCase.length - 1);
@@ -39,33 +38,33 @@ public class MergeSort {
         int[] leftHalf = new int[middle - start + 1];
         int[] rightHalf = new int[end - middle];
 
-        //fill the left half
+        // fill the left half
         for(int i = 0; i < leftHalf.length; i++)
             leftHalf[i] = array[start + i];
 
-        //fill the right half
+        // fill the right half
         for(int i = 0; i < rightHalf.length; i++)
             rightHalf[i] = array[middle + i + 1];
         
         int leftIndex = 0, rightIndex = 0;
         int currentIndex = start;
     
-        //merge the two arrays: confront the first (smallest) element of the 
-        //left half with the first (smallest) element of the right half, the
-        //smallest will be first on the merged sequence
+        // merge the two arrays: confront the first (smallest) element of the 
+        // left half with the first (smallest) element of the right half, the
+        // smallest will be first on the merged sequence
         while(leftIndex < leftHalf.length && rightIndex < rightHalf.length)
             if(leftHalf[leftIndex] < rightHalf[rightIndex])
                 array[currentIndex++] = leftHalf[leftIndex++];
             else
                 array[currentIndex++] = rightHalf[rightIndex++];
 
-        //copy the remaining elements of the left half if any 
-        //this is the case where the smallest element of the left half
-        //is bigger than any element of the right half
+        // copy the remaining elements of the left half if any 
+        // this is the case where the smallest element of the left half
+        // is bigger than any element of the right half
         while(leftIndex < leftHalf.length)
             array[currentIndex++] = leftHalf[leftIndex++];
 
-        //the analgous of the previous while
+        // the analgous of the previous while
         while(rightIndex < rightHalf.length)
             array[currentIndex++] = rightHalf[rightIndex++];
     }

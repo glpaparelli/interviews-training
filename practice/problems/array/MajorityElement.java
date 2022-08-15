@@ -1,25 +1,27 @@
 package problems.array;
 /*
-    > problem: Majority Element
-    Given an array "nums" of size n, return the majority element.
-    The majority element is the element that appears more than 
-    the floor of n/2
-
-    > idea: We have to exploit the following property: if we divide 
-    an array into two halves and if the two halves have the same majority
-    element than the array itself has that majority element.
-    Mind that we divide using indexes and not by passing copies of subarrays 
-    because that costs time and space.
-
-    > note: this is not the best possible solution as it have time complexity
-    O(nlogn) as the basic idea is taken from mergesort. The space complexity is 
-    O(log n) since, even if we do not allocate anything new, space is used by the
-    stack frames of the recursive calls. Since the algorithm cuts in half the array 
-    at each level of recursion we have that there can only be O(logn) cuts before 
-    the base case of 1 is reached.
-        - the best possible solution is O(n) time and O(1) space nd it is done
-          using the Boyer-Moore Voting Algorithm
-*/
+ * > PROBLEM 169 (easy): Majority Element
+ *   Given an array "nums" of size n, return the majority element.
+ *   The majority element is the element that appears more than 
+ *   the floor of n/2
+ * 
+ * > SOLUTION: 
+ *   We have to exploit the following property: if we divide an array 
+ *   into two halves and if the two halves have the same majority
+ *   element than the array itself has that majority element.
+ *   Mind that we divide using indexes and not by passing copies of subarrays 
+ *   because that costs time and space.
+ * 
+ * > NOTE: 
+ *   This is not the best possible solution as it have time complexity
+ *   O(nlogn) as the basic idea is taken from mergesort. The space complexity is 
+ *   O(log n) since, even if we do not allocate anything new, space is used by the
+ *   stack frames of the recursive calls. Since the algorithm cuts in half the array 
+ *   at each level of recursion we have that there can only be O(logn) cuts before 
+ *   the base case of 1 is reached.
+ *      - the best possible solution is O(n) time and O(1) space 
+ *        and it is done using the Boyer-Moore Voting Algorithm
+ */
 public class MajorityElement {
     public static void main(String[] args) {
         assert(solution(new int[]{3, 2, 3}) == 3);

@@ -19,13 +19,6 @@ public class SelectionSort {
         testCases.add(new int[] {4, 3, 2, 1});                      //reverse sorted array
         testCases.add(new int[] {2, 1, 4, 5, 9, 2, 3, 6, 7, 21});   //real case
 
-        // //test of int insertion sort
-        // for(int[] testCase : testCases){
-        //     System.out.println("before sorting: " + Arrays.toString(testCase));
-        //     sort(testCase);
-        //     System.out.println("after sorting: " + Arrays.toString(testCase));
-        // }
-
         //test of generic insertion sort
         for(int[] testCase : testCases){
             Integer[] objArray = Arrays.stream(testCase).boxed().toArray(Integer[] :: new);

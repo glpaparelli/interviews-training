@@ -1,24 +1,21 @@
 package problems.array;
-
 import java.util.Arrays;
-
 /*
-    > problem: Meeting Rooms 2
-    Given an array o fmeeting time intervals consisting of start 
-    and end times [[s1, e1], [s2, e2], ...] (obv s_i < e_i), find
-    the minimum number of conference rooms rquired
-        - e.g: [[0, 30],[5, 10],[15, 20]] -> output 2
-    Mind that the array is not sorted by s_i or in any other way
-
-    > idea: first of all we sort by the starting time of the meetings. 
-    Then we go through the array from the start: if i and i+1 do overlap
-    then they will need two rooms, hence the number of rooms will be 
-    incremented. 
-    Meetings that do not overlap can be held in the same room, so
-    if no meeting overlap only one room is needed
+ * > PROBLEM: Meeting Rooms 2
+ *   Given an array of meeting time intervals consisting of start 
+ *   and end times [[s1, e1], [s2, e2], ...] (obv s_i < e_i), find
+ *   the minimum number of conference rooms rquired
+ *      - e.g: [[0, 30],[5, 10],[15, 20]] -> output 2
+ *   Mind that the array is not sorted by s_i or in any other way
+ * 
+ * > SOLUTION: 
+ *   First of all we sort by the starting time of the meetings. 
+ *   Then we go through the array from the start: if i and i+1 do overlap
+ *   then they will need two rooms => the number of rooms will be incremented. 
+ *   Meetings that do not overlap can be held in the same room, so
+ *   if no meeting overlap only one room is needed
 */
 public class MeetingRoomsII {
-
     public static void main(String[] args) {
         assert(solution(new int[][]{}) == 0);
         assert(solution(new int[][]{{1,4}}) == 1);

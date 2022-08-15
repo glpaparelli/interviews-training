@@ -1,26 +1,27 @@
 package problems.array;
-
 import static org.junit.Assert.assertArrayEquals;
 import java.util.HashMap;
 import java.util.Map;
 /*
-    > problem: Two Sum
-    Given an array of integers "nums" and an integer 
-    "target" return indices of the two numbers in the array such 
-    that they add up to "target".
-    - you may assume that each input would have exactly one
-        solution and you may not use the same element twice
-    - you can return the answer in any order
-
-    > idea: use a map where the keys are the values of the array
-    and the values associated to the keys are the indexes of the
-    values in the array
-        eg: nums = [3, 2, 5], map =  3 -> 0, 2 -> 1, 5 -> 2
-    we can solve the problem in one passage of the array: while building
-    the map we also look up on it. This will result in a "reversed
-    solution" (if target = a + b and a is the first element in the array
-    we will not find the solution until we inspect nums[i] = b and find 
-    the complement a in the map, that's why {map.get(complement), i})
+ * > PROBLEM 1 (easy): Two Sum
+ *   Given an array of integers "nums" and an integer 
+ *   "target" return indices of the two numbers in the array such
+ *   that they add up to "target".
+ *      - you may assume that each input would have exactly one
+ *        solution and you may not use the same element twice
+ *      - you can return the answer in any order
+ * 
+ * > SOLUTION: 
+ *   We use a map where the keys are the values of the array 
+ *   and the values associated to the keys are the indexes of the
+ *   values in the array
+ *      - eg: nums = [3, 2, 5], map =  3 -> 0, 2 -> 1, 5 -> 2
+ *   We can solve the problem in one passage of the array: while building
+ *   the map we also look up on it. 
+ *   This will result in a "reversed solution" (if target = a + b and a is 
+ *   the first element in the array we will not find the solution until 
+ *   we inspect nums[i] = b and find the complement a in the map, 
+ *   that's why {map.get(complement), i})
 */
 public class TwoSum {
     public static void main(String[] args) {

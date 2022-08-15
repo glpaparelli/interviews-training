@@ -1,19 +1,17 @@
 package problems.array;
-
 import java.util.HashSet;
 import java.util.Set;
 /*
-    > problem: Contains Duplicate
-    Given an array "nums" return true if any value appears at
-    least twice in the array and return false if every element
-    is distinct
-
-    > idea: to minimize the complexity in time it is enough to
-    exploit a HashSet (backed as HashMap). 
-    For each element i of the array we check if the element is already
-    in the set, if not we insert it, otherwise we return true
-        
-*/
+ * > PROBLEM 217 (easy): Contains Duplicate
+ *   Given an array "nums" return true if any value appears at 
+ *   least twice in the array and return false if every element
+ *   is distinct
+ * 
+ * > SOLUTION: 
+ *   We use a set (HashSet): for each element of the array we check 
+ *   if the element is in the set, if so we return true, otherwise 
+ *   we insert in the set and loop. 
+ */
 public class ContainsDuplicate {
     public static void main(String[] args) {
         assert(solution(new int[]{1,2,3,1}));
@@ -24,12 +22,12 @@ public class ContainsDuplicate {
     public static boolean solution(int[] nums){
         Set<Integer> set = new HashSet<>();
         
-        for(int i = 0; i < nums.length; i++)
-            if(set.contains(nums[i]))
+        for(int num : nums)
+            if(set.contains(num))
                 return true;
             else
-                set.add(nums[i]);
-        
+                set.add(num);
+
         return false;
     }
 }
