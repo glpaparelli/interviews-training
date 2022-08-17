@@ -108,5 +108,4 @@ public class Utils {
     public static void sortListOfArraysByNthComponent(List<Integer[]> list, int index){
         Collections.sort(list, (e1, e2) -> Integer.compare(e1[index], e2[index]));
     }
-
 }
