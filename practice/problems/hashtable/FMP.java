@@ -47,5 +47,4 @@ public class FMP {
 
         return nums.length + 1;
     }
-        
 }

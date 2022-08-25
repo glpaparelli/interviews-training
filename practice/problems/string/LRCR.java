@@ -18,7 +18,6 @@ import java.util.Arrays;
  *   char substring with only k substitutions
  */
 public class LRCR {
-    
     public static void main(String[] args) {
         assert(solution("ABAB", 2) == 4);
         assert(solution("AABABBA", 1) == 4);

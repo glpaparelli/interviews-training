@@ -71,7 +71,6 @@ public class PalindromePairs {
         // corner case: w1 = "", w2 = "...", w1 + w2 and w2 + w1 is 
         // palindrome only if w2 itself is already a palindrome
         for(String w1 : words){
- 
             int w1Index = map.get(w1); 
             int w2Index = -1;       
 

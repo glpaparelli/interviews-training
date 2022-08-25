@@ -1,4 +1,4 @@
-package datastructures.trie;
+package datastructure.trie;
 
 public class Trie {
     private TrieNode root; 
@@ -44,7 +44,6 @@ public class Trie {
         return delete(root, word, 0);
     }
 
-    //TODO: overriding posso anche cambiare le condizioni di visibilita!
     private boolean delete(TrieNode current, String word, int start) {
         // base case, run trough the trie as many times as the length of the word
         if(start == word.length()){
