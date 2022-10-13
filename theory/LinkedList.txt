@@ -1,0 +1,109 @@
+- INTRODUCTION
+Like arrays a linked list is used to represent sequential data. It is a linear collection of 
+data elements whose order is not given by their physical placement in memory, as opposed to
+arrays, where data is stored in sequential blocks of memory. 
+Instead, each element contains an address of the next element. It is a data structure 
+consisting of a collection of nodes which together represent a sequence. 
+
+In its most basic form, each node contains the data and a reference (a link) to the next 
+node of the sequence. 
+
+- ADVANTAGES
+Insertion and deletion of a node in the list (given the position of the said node) is O(1),
+wheres in arrays the following elements will have to be shifted
+    - insertion
+        - as the new head: 
+            - create the node
+            - set node.next to the old head of the list
+            - set the head reference to the new node
+        - as last element: 
+            - create the node
+            - follow the list until we find the element with its next field equal null
+            - set that next to the new node
+        - between the nodes a and b
+            - create the node
+            - set a.next to the new node
+            - set the new node next field to b
+    - deletion is analogous
+
+- DISADVANTAGES
+Access time is linear beacause directly accessing elements by its position in the list 
+as we would do with the arrays is not possible: you have to traverse the list from the
+start. 
+
+- TYPES OF LINKED LIST
+1) Singly Linked List
+A linked list where each node points to the next node and the last node points to null
+
+2) DOUBLY LINKED LIST
+A linked list where each node has two pointers, next which points to the next node and
+prev which points to the previous node. The prev pointer of the first node and the 
+next pointer of the last node point to null
+
+3) CIRCULAR LINKED LIST
+A singly linked list where the last node points back to the first node. There is a 
+circular doubly linked list variant where the prev pointer of the first element points 
+to the last element of the list and the next pointer of the last element points to the
+first element. 
+
+- IMPLEMENTATIONS
+In Java a linked list is implemenented by the class LinkedList which inherits from List.
+
+- TIME COMPLEXITY
+    - access: O(n)
+    - search: O(n)
+    - insert: O(1), assuming you have traversed to the insertion position
+    - remove: O(1), assuming you have traversed to the node to be removed
+
+- CORNER CASES
+1) empty list (the head is null)
+2) single node
+3) two nodes
+4) the list has cycles
+    - a list has a cycle if a next pointer points to a previous node of the list
+    - tip: clarify beforehand with the interviewer whether there can be a cycle in 
+      the list. Usually the answer is no and you don't have to handle it in the 
+      code.
+
+- COMMON ROUTINES 
+1) counting the nodes
+2) reversing a linked list in-place
+3) finding the middle node of the linked list using two pointers
+    - fast and slow pointers, see below
+4) merging two linked lists together
+
+- TECHNIQUES
+1) Sentinel/Dummy Nodes
+Adding a sentinel/dummy node at the head and/or tail migh help to handle many edge
+cases where operations have to be performed on the head or the tail. 
+The presence of a dummy node essentially ensures that operation will never have be 
+done on the head/tail, thereby removing a lot of headache in writing conditional 
+checks to dealing with null pointers. 
+Be sure to remove the dummy nodes at the end of the operation
+
+2) Two Pointers
+Two pointer approaches are also common for linked lists. This approach is used for 
+many classic linked list problems:
+- getting the k-th from last node:
+    - have two pointers, where one is k nodes ahead of the other. When the node ahead
+      reaches the and the other node is k nodes behind.
+- detecting cycles: 
+    - have two pointers, where one pointer increments twice as much as the other, if 
+      the two pointers meet it means that there is a cycle. 
+- getting the middle node: 
+    - have two pointers, where one pointer increments twice as much as the other. 
+      When the faster node reaches the end of the list the slower node will be at the 
+      middle of the list. 
+
+3) Using Space
+Many linked list problems can be easly solved by creating a new linked list and adding
+nodes to the new linked list with the final result. However this takes up extra space
+and makes the question much less challenging.
+The interviewer will usually request that you modify the linked list in-place and 
+solve the problem without additional storage. 
+> check the problem Reverse a Linked List for ideas. 
+
+4) Elegant Modification Operations
+- truncate a list: simply set the next pointer to null
+- swapping nodes: simply swap the values of the nodes
+- compining two lists: attach the head of the second list to tail.next of the 1st list

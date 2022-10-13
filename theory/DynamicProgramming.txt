@@ -1,0 +1,137 @@
+- INTRODUCTION
+Dynamic Programming (DP) is a technique that solves some particular type of problems
+in Polynomial Time.
+DP is mainly an optimization over plain recursion. Wherever we see a recursive solution
+that has repeated calls for the same inputs we can optimize it using DP. 
+Dynamic Programming solutions are faster than the exponential brute method and the 
+correctness can be easly proved.
+
+- HOW TO SOLVE A PROBLEM
+To dynamically solve a problem we need to check two necessary conditions: 
+1) Overlapping Oubproblems: when the solutions to the same subproblems are needed 
+   repetitively for solving the actual problem. The problem is said to have overlapping
+   subproblems property 
+2) Optimal Substructure: if the optimal solution of the given problem can be obtained
+   by using optiaml solutions of its subproblems then the problem is said to have optimal
+   substructure
+
+- STEPS TO SOLVE A PROBLEM
+1) identify if it is a DP problem
+2) decide the state expression with the least parameters
+3) formulate a state and transition relationship
+4) do tabulation or memorization
+
+> STEP 1: How to classify a problem as DP problem
+- Typically all the problems that require maximizing or minimizing certian quantities
+  or counting problems that say to count the arrangements under certain conditions or
+  or certain probability problem can be solved by using dynamic programming
+- All dynamic programing problems satify the overlapping subproblems property and most 
+  of the classic DP problem also satisfy the optiaml substructure property.
+
+Once we observe these properties in a given problem we can be sure that it can be solved
+used DP.
+
+> STEP 2: Deciding the State
+DP problems are all about the state and its transition. This is the most basic step
+which must be done carefully because the state transition depends on the choice of 
+state definition.
+- state: A state can be defined as the set of parameters that can uniquely identify 
+  a certain position or standing in the given problem. This set of parameters should be
+  as small as possible to reduce state space
+
+- example: in the Knapsack Problem we define our state by two parameters: index and
+  weight, i.e DP[index][weight]. Here DP[index][weight] tells us the maximum profit it
+  can make by taking the itemps from range 0 to index having the capacity of sack 
+  to be weight. 
+
+> STEP 3: Formulating a relation among the states
+This is the hard part: how we can use the previous states to compute and transition to 
+the current state. 
+
+> STEP 4: Adding memorization or tabulation for the state
+We just need to store the state answer so that the next time that state is required 
+we can directly use it from memory. 
+
+- TABULATION vs MEMORIZATION
+There are two different ways to store the values so that the values of a sub-problem 
+can be reused: 
+- Tabulation: bottom up
+- Memorization: top down
+
+> TABULATION: Bottom-Up Dynamic Programming
+Let's descirbe a state for our DP problem to be dp[x], with dp[0] as base state abd 
+dp[n] as our destination state. So, we need to find the value of the destination state.
+If we start our transition from the base state dp[0] and folow our transition relation
+to reach our destination state dp[n] we call it bottom up approach.
+
+Why we call it tabulation? To know this let's frist write some code to calculate the 
+factorial of a number using a bottom up approach. 
+Following the general procedure we first define a state. In this case we define the 
+state dp[x] to be the factorial of the number x. 
+Given that is quite simple that dp[x] = dp[x-1] * (x) / dp[x+1] = dp[x] * (x+1) and 
+it is quite simple to write the following snippet
+
+tabulationFact(int n){
+    int dp[n];
+    int dp[0] = 1; // base case
+
+    for(int i = 1; i <= n; i++)
+        dp[i] = dp[i]-1 * i;
+
+    return dp[n-1];
+}
+
+The previous snippet clearly follows the bottom-up approach as it starts its transition
+from the bottom most case dp[0] and reaches its destination case dp[n]. 
+Here we may notice that the DP table is being populated sequentially and we are directly 
+accessing the calculated states from the table itself and hence we call it the tabulation
+method. 
+
+> MEMORIZATION: Top-Down Dynamic Programming
+Once again let's descirbe it in terms of state transition. If we need to find the value
+for some state say DP[n] and instead of starting from the base state dp[0] we ask our 
+answer from the states that reach the destination state dp[n] following the state
+transition relation, then it is the top-down DP. 
+
+In this method we start computing from the top most destination state and calculate its
+answer by taking in count the values of states that can reach the destination state, till
+we reach the bottom-most base state. 
+
+Let's see again the snippet of the factorial problem in the top-down fashion
+
+int dp[n]; // initialize all cells to -1
+memorizationFact(int x){
+    if(x == 0)
+        return 1;
+    if(dp[x] != -1)
+        return dp[x]; // memorization
+    return dp[x] = x * memorizationFact(x-1);
+}
+
+As shown in the snippet above we are storing the most recent cache up to a limit so that
+if the next fime we got a call from the same state we simply return it from memory.
+This is why we call it memorization, we are storing the most recent state values. 
+In this case the memory layout is linear, that's why it may seem that the memory is 
+filled up in a sequential manner like the tabulation, but we may consider any other
+top-down DP having 2D memory layout. 
+
+> SUMMARY
+- state
+    - tabulation: state transition relation is difficult to think
+    - memorization: state transition is relatively easy to think
+- code
+    - tabulation: code gets complicated when lot of conditions are required
+    - memorization: code is easy
+- speed
+    - tabulation: fast, as we directly access previous states from the memory
+    - slow due to a lot of recursive calls and return statements
+- subproblem solving
+    - tabulation: if all subproblems must be solved at least once a bottom-up DP 
+      algorithm is usually better that a top-down by a constant factor
+    - memorization: if some subrproblem can be avoided than the memorized solution has
+      an advantage vs the bottom-up way
+- table entries
+    - tabulation: in tabulated version startingfrom the first entry all entries are
+      filled one by one
+    - unlike tabulated version, all entries of the lookup table are not necessarly
+      filled in Memorized version. The table is filled on demand. 
