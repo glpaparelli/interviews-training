@@ -1,12 +1,24 @@
 package problems.linkedlist;
+import datastructure.ListNode;
 /*
  * > PROBLEM 61 (medium): Rotate List
- * //TODO
+ *   Given the head of a linked list list, rotate the list to the right by k places.
+ * 
+ * > SOLUTION: 
+ *   Use 4 pointers to rotate the list once reached the k-th element
  */
-
-import datastructure.ListNode;
-
 public class RotateList {
+    public static void main(String[] args) {
+        ListNode input1 = new ListNode(1); 
+        input1.next = new ListNode(2); 
+        input1.next.next = new ListNode(3);
+        input1.next.next.next = new ListNode(4);
+        input1.next.next.next.next = new ListNode(5, null);
+
+        ListNode.printList(input1);
+        ListNode output1 = solution(input1, 2);
+        ListNode.printList(output1);
+    }
 
     public static ListNode solution(ListNode head, int k){
         if(head == null)
@@ -16,6 +28,7 @@ public class RotateList {
 
         int size = ListNode.listSize(head);
 
+        // if list size is multiple of k the rotation has no effect
         if(size == k || k % size == 0)
             return head;
 
@@ -42,5 +55,4 @@ public class RotateList {
         
         return head;
     }
-
 }   

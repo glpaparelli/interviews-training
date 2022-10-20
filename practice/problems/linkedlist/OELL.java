@@ -1,11 +1,22 @@
 package problems.linkedlist;
 import datastructure.ListNode;
 /*
-    //TODO
  * > PROBLEM 328 (medium): Odd Even Linked List
+ *   Given the head of a singly linked list, group all the nodes with odd 
+ *   indices toghether followed by the nodes with even indices, and return the 
+ *   reordered list. 
+ * 
+ *   The first node is considered odd, and the second node is even, and so on. 
+ * 
+ *   Note that the relative order inside both the even and odd groups should remain
+ *   as it was in the input. 
+ *   You must solve the problem in O(1) extra space complexity and O(n) time complexity
+ * 
+ * > SOLUTION: 
+ *   First we need to know how long is the list size and its tail, then we play 
+ *   with the index to flip the elements as needed.
  */
 public class OELL {
-
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
@@ -19,7 +30,6 @@ public class OELL {
     }
 
     public static ListNode solution(ListNode head){
-
         if(head == null)
             return null;
         if(head.next == null || head.next.next == null)
@@ -36,6 +46,7 @@ public class OELL {
         ListNode current = head.next; 
 
         for(int i = 1; i <= size; i++){
+            // if the index is odd then we leave it there
             if(i % 2 != 0)
                 continue;
 
@@ -49,6 +60,4 @@ public class OELL {
         
         return head;
     }
-
-    
 }   

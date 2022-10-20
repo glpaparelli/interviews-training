@@ -1,6 +1,6 @@
 package datastructure;
 /*
- * simple definition of a singly linked list, also leetcode fluff
+ * simple definition of a singly linked list, leetcode fluff
  */
 public class ListNode {
     public int val;

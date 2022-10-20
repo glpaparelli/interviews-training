@@ -1,14 +1,22 @@
 package problems.linkedlist;
-/*
-//TODO
- * > PROBLEM 206 (easy): Reverse Linked List
- */
-
 import datastructure.ListNode;
-
+/*
+ * > PROBLEM 206 (easy): Reverse Linked List
+ *   Given the head of a singly linked list, reverse the list and return 
+ *   the reversed list. 
+ */
 public class ReverseLL {
-    
-    public ListNode solution(ListNode head){
+    public static void main(String[] args) {
+        ListNode list1 = new ListNode(1);
+        list1.next = new ListNode(2);
+        list1.next.next = new ListNode(3);
+        list1.next.next.next = new ListNode(4);
+
+        list1 = itSolution(list1);
+        ListNode.printList(list1);
+    }
+
+    public static ListNode itSolution(ListNode head){
         ListNode previous = null;
         ListNode current = head; 
         ListNode next = null;
@@ -23,11 +31,11 @@ public class ReverseLL {
         return previous;
     }
 
-    public ListNode recSolution(ListNode head){
+    public static ListNode recSolution(ListNode head){
         return recursion(head, null);
     }
 
-    private ListNode recursion(ListNode head, ListNode newHead) {
+    private static ListNode recursion(ListNode head, ListNode newHead) {
         if(head == null)
             return newHead;
         
@@ -35,6 +43,4 @@ public class ReverseLL {
         head.next = newHead;
         return recursion(next, head);
     }
-
-
 }

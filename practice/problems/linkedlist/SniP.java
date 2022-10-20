@@ -1,13 +1,15 @@
 package problems.linkedlist;
+import datastructure.ListNode;
 /*
  * > PROBLEM 24 (medium): Swap Nodes in Pairs
- * //TODO
+ *   Given a linked list, swap every two adjacent nodes and return its head. 
+ *   You must solve the problem without modifying the values in the list's nodes
+ *   (i.e., only nodes themselves may be changed)
+ * 
+ * > SOLUTOIN: 
+ *   Indices play
  */
-
-import datastructure.ListNode;
-
 public class SniP {
-    
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
@@ -17,7 +19,6 @@ public class SniP {
         ListNode.printList(head);
         head = solution(head);
         ListNode.printList(head);
-
     }
 
     public static ListNode solution(ListNode head){
@@ -38,7 +39,6 @@ public class SniP {
         ListNode current = head;
         ListNode next = head.next;
 
-
         while(current != null && next != null){
             swapPair(previous, current, next);
             next = current;
@@ -52,9 +52,9 @@ public class SniP {
                 break;
             }
         }
+
         return dummy.next;
     }
-
 
     private static void swapPair(ListNode previous, ListNode current, ListNode next) {
         previous.next = next;

@@ -1,12 +1,28 @@
-package algorithms.searching;
+package algorithms;
 /*
  * > PROBLEM 704 (easy): Binary Search
- *   //TODO
+ *   Given an array of integer "nums" which is sorted in ascending order, and
+ *   an integer "target", write a function to search "target" in nums. If 
+ *   target exists, then return its index. Otherwise return -1. 
+ * 
+ *   You must write an algorithm with O(log n) runtime complexity
+ * 
+ * > SOLUTION
+ *   Classic binary search algorithm: since the array is sorted go the half of 
+ *   the array, if the element in the middle is the target then you found it, 
+ *   otherwise if the middle element is bigger than target then the target 
+ *   will be in the left half, otherwise in the right half. 
+ *   Keep the process until the target is found.
  */
 public class BinarySearch {
     public static void main(String[] args) {
-        int x = recSolution(new int[]{5}, 5, 0, 0);
-        System.out.println(x);
+        int[] input1 = {-1,0,3,5,9,12}; 
+        int target1 = 9; 
+        assert(itSolution(input1, target1) == 4);
+
+        int[] input2 = {-1,0,3,5,9,12};
+        int target2 = 2;
+        assert(recSolution(input2, target2, 0, input2.length-1) == -1);
     }
 
     public static int itSolution(int[] nums, int target){

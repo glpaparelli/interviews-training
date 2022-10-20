@@ -1,4 +1,4 @@
-package problems.searching;
+package problems.binarysearch;
 /*
  * > PROBLEM 1235 (hard): Maximum Problem in Job Scheduling
  *   // TODO dynamic programming

@@ -51,17 +51,24 @@ import java.util.Arrays;
  *      - F(i) = min_i=0,n-1 F(i - c_i) + 1
  */
 public class CoinChange {
+    public static void main(String[] args) {
+        int[] input1 = {1,2,5}; 
+        int[] input2 = {2};
+        int[] input3 = {1};
 
-    //TODO main
+        assert(solutionBottomUp(input1, 11) == 3);
+        assert(solutionBottomUp(input2, 3) == -1);
+        assert(solutionBottomUp(input3, 0) == 0);
+    }
 
-    public int solutionTopDown(int[] coins, int amount){
+    public static int solutionTopDown(int[] coins, int amount){
         if(amount < 1)
             return 0; 
         
         return helper(coins, amount, new int[amount]);
     }
 
-    private int helper(int[] coins, int amountLeft, int[] dp) {
+    private static int helper(int[] coins, int amountLeft, int[] dp) {
         // dp[i] = #coins needed to change the amount i
 
         if(amountLeft < 0)

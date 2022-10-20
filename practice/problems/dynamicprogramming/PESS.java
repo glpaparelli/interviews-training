@@ -12,7 +12,13 @@ import java.util.Arrays;
  *          - explaination: the array can be partitioned as [1,5,5] and [11]
  */
 public class PESS {
-    //TODO main
+    public static void main(String[] args) {
+        int[] input1 = {1,5,11,5};
+        int[] input2 = {1,2,3,5};
+
+        assert(solution(input1));
+        assert(solution(input2));
+    }
 
     // side note: we can also optimize further, it is 
     // possible to use the same apporach but with just 1D dp.

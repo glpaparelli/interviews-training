@@ -32,7 +32,16 @@ package problems.dynamicprogramming;
  *          - ...
  */
 public class MaximumSubarray {
-    //TODO main
+    public static void main(String[] args) {
+        int[] input1 = {-2,1,-3,4,-1,2,1,-5,4};
+        int[] input2 = {1};
+        int[] input3 = {5,4,-1,7,8};
+
+        assert(solution(input1) == 6);
+        assert(solution(input2) == 1);
+        assert(solution(input3) == 23);
+    }
+
     public static int solution(int[] nums){
         int size = nums.length;
         int max = nums[0];

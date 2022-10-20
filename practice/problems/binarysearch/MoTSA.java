@@ -1,4 +1,4 @@
-package problems.searching;
+package problems.binarysearch;
 /*
  * > PROBLEM 4 (hard): Median of Two Sorted Arrays 
  *   Given two sorted arrays "nums1" and "nums2" of size

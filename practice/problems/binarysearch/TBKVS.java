@@ -1,4 +1,4 @@
-package problems.searching;
+package problems.binarysearch;
 /*
  * > PROBLEM 981 (medium): Time Based Key-Value Store
  *   //TODO

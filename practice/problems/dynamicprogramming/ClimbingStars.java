@@ -1,9 +1,19 @@
 package problems.dynamicprogramming;
 /*
  * > PROBLEM 70 (easy): Climbing Stars
- * //TODO
+ *   You are climbing a staircase. It takes n steps to reach the top. 
+ *   Each time you can either climb 1 or 2 steps. In how many distinct ways
+ *   can you clim to the top? 
+ * 
+ * > SOLUTION: 
+ *   Classic bottom up dynamic programming solution: see the commented code.
  */
 public class ClimbingStars {
+    public static void main(String[] args) {
+        assert(solution(2) == 2);
+        assert(solution(3) == 3);
+    }
+
     public static int solution(int n){
         int[] dp = new int[n+1];
 
@@ -12,6 +22,7 @@ public class ClimbingStars {
         if(n == 2)
             return 2;
         
+        // base cases
         dp[0] = 0; 
         dp[1] = 1;
         dp[2] = 2;
