@@ -1,7 +1,8 @@
 package problems.linkedlist;
 import java.util.HashSet;
 import java.util.Set;
-import datastructure.ListNode;
+
+import datastructures.ListNode;
 /*
  * > PROBLEM 141 (easy): Linked List Cycle
  *   Given the head of a linked list, determine if the linked list has a cycle in it. 

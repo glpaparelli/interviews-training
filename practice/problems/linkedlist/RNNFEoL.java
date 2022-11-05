@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 19 (medium): Remove N-th Node From End of List
  *   Given the head of a linked list, remove the n-th node from the end of the 

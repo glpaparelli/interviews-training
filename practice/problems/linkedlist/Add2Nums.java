@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 2 (medium): Add Two Numbers
  * 

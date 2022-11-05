@@ -1,4 +1,4 @@
-package datastructure.trie;
+package datastructures.trie;
 
 public class Trie {
     private TrieNode root; 

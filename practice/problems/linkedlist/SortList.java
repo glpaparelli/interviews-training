@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 148 (medium): Sort List
  *   Given the head of a linked list, return the list after 

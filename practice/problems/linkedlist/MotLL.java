@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 876 (easy): Middle of the Linked List
  *   Given the head of a singly linked list, return the middle node of the

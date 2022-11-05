@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 234 (easy): Palindrome Linked List
  *   Given the head of a singly linked list, return true if it is a palindrome

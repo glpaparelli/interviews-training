@@ -1,16 +1,17 @@
-package datastructure;
+package datastructures;
 /*
  * simple definition of a singly linked list, leetcode fluff
  */
 public class ListNode {
     public int val;
     public ListNode next;
-    public ListNode(){
 
-    }
+    public ListNode(){}
+
     public ListNode(int val){ 
         this.val = val;
     }
+
     public ListNode(int val, ListNode next){
         this.val = val; 
         this.next = next;
@@ -22,6 +23,7 @@ public class ListNode {
             System.out.print(" " + tmp.val + " ");
             tmp = tmp.next;
         }
+
         System.out.println();
     }
 

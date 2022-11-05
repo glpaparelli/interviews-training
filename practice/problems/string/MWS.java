@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import datastructure.Pair;
+
+import datastructures.Pair;
 /*
  * > PROBLEM 76 (hard): Minimum Window Substring
  *   Given two strings "s" and "t" of lengths m and n respectively, return the

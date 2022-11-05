@@ -4,7 +4,7 @@ package problems.linkedlist;
  *   
  */
 
-import datastructure.ListNode;
+import datastructures.ListNode;
 
 public class ReorderList {
     

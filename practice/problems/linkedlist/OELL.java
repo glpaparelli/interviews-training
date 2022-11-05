@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 328 (medium): Odd Even Linked List
  *   Given the head of a singly linked list, group all the nodes with odd 

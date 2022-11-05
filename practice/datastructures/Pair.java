@@ -1,4 +1,4 @@
-package datastructure;
+package datastructures;
 
 /* simple generic pair class */
 public class Pair<K, V> {

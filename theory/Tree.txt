@@ -1,0 +1,108 @@
+- INTRODUCTION
+A tree is a widely used abstract data type that represents a hierarchical structure
+with a set of connected nodes. Each node in the tree can be connected to many children, 
+but must be connected to exactly one parent, except for the root node, which has no 
+parent. 
+
+A tree is an undirected and connected acyclic graph. There are no cycles or loops. 
+Each node can be like the root node of its own subtree, making recursion a useful 
+technique for tree traversal. 
+
+For the purpose of interviews, you will usually be asked on binary trees as opposed to
+ternary (3 childern) or N-ary (N children) trees. 
+
+Trees are commonly used to represent hierarchical data, e.g. file systems, JSON and 
+HTML documents. 
+
+> An advanced variation is the Trie, which has its own file. 
+  - string storing and such
+
+- COMMON TERMS
+    - neighbor: parent or child of a node
+    - ancestor: a node reachable by traversing its parent chain
+    - descendant: a node in the node's subtree
+    - degree: number of childern of a node
+    - degree of a tree: maximum degree of nodes in the tree
+    - distance: number of edges along the shortest path between two nodes
+    - level/depth: number of edges along the unique path between a node and the root
+    - width: number of nodes in a level
+
+- BINARY TREE
+Nodes in a binary trees have a maximum of two childer
+
+> BINARY TREE TERMS
+    - complete binary tree: a complete binary tree is a binary tree in which every 
+      level, execpt possibly the last, is complitely filled, and all nodes in the last
+      level are as far left as possible.
+    - balanced binary tree: a binary tree structure in which the left and right 
+      subtrees of every node differ in height by no more than 1
+
+> TRAVERSALS
+We have 3 traversal strategies: 
+1) in-order traversal: left -> root -> rigth
+2) pre-order traversal: root -> left -> rigth
+3) post-order traversal: left -> rigth -> root
+
+Note that in-order traversal of a binary tree is insufficient to uniquely serialize
+a tree. Pre-order or post-order traversal is also required. 
+
+> BINARY SEARCH TREE (BST)
+A binary search tree is a rooted binary tree data structure with the key of each 
+internal node being greater than all the keys in the respective node's left subtree and
+less than all the keys in its right subtree. 
+
+The time complexity of operations on the BST is directly proportional to the heigth 
+of the tree. 
+
+- in-order traversal of a BST will give all the elements in order. 
+- when a question involves a BST, the inverviewer is usually looking for a solution
+  which runs faster than O(n)
+
+TIME COMPLEXITY
+- access: O(log(n))
+- search: O(log(n))
+- insert: O(log(n))
+- remove: O(log(n))
+
+- space complexity of traversing balanced trees is O(h) where h is the height of the
+  tree, while traversing very skewed trees (which is essentially a linked list) will
+  be O(n)
+
+- THINGS TO LOOK OUT DURING INTERVIEWS
+Be very familiar with writing pre-order, in-order and post-order traversal recursively.
+As an extension, be familiar with them also in the iteratively version. 
+
+- CORNER CASES
+  1) empty tree
+  2) single node
+  3) two nodes
+  4) very skewed tree (like a linked list)
+
+- COMMON ROUTINES
+Many tree questions make use of one or more of these routines in the solution: 
+  - insert value
+  - delete value
+  - count number of nodes in tree
+  - whether a value is in the tree
+  - calculate height of the tree
+  > binary search tree
+    - determine if a tree is a binary search tree
+    - get max value 
+    - get min value
+
+- TECHNIQUES
+1) RECURSION
+Recursion is the most common approach for traversing trees. When you notice that the 
+subtree problem can be used to solve the entire problem, try using recursion. 
+
+When using recusion, always remember to check for the base case, which is usually 
+when the node is null. 
+
+Sometimes it is possible that the recursive function needs to return two values. 
+
+2) TRAVERSING BY LEVEL
+Wehn asked to traverse a tree by level, use breadth-first search
+
+3) SUMMATION OF NODES
+If the question involves summation of nodes along the way, be sure to check whether 
+nodes can be negative

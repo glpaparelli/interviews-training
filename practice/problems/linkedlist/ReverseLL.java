@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 206 (easy): Reverse Linked List
  *   Given the head of a singly linked list, reverse the list and return 

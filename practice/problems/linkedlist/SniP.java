@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 24 (medium): Swap Nodes in Pairs
  *   Given a linked list, swap every two adjacent nodes and return its head. 

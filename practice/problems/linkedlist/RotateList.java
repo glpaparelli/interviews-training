@@ -1,5 +1,5 @@
 package problems.linkedlist;
-import datastructure.ListNode;
+import datastructures.ListNode;
 /*
  * > PROBLEM 61 (medium): Rotate List
  *   Given the head of a linked list list, rotate the list to the right by k places.
