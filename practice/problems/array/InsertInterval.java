@@ -1,7 +1,7 @@
 package problems.array;
-import static org.junit.Assert.assertArrayEquals;
 import java.util.ArrayList;
 import java.util.List;
+import static org.junit.Assert.assertArrayEquals;
 /*
  * > PROBLEM 57 (medium): Insert Interval
  *   You are given an array of non-overlapping intervals "intervals"

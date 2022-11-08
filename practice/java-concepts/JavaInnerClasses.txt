@@ -1,0 +1,51 @@
+-- JAVA INNER CLASS -- 
+A Java inner class is a class defined inside the body of another class.
+A inner class can be delcared public, private, protected or with default access 
+whereas an outer class can only have public or default access. 
+In java the nested classes are divided into two types. 
+
+- STATIC NESTED CLASS
+If the nested class is static then it is called static nested class. 
+This kind of class can access only the static members of the outer class
+A static nested class is the as any other top-level class and it is nested 
+only for packaging convinence. 
+A static class object can be created with the following statement: 
+    OuterClass.StaticNestedClass nestedClassObj = new OuterClass.StaticNestedClass();
+
+- INNER CLASS 
+Any non-static nested class is known as inner class. An inner class in java is 
+associated with the object of the outer class and they can access all the members of
+the outer class. 
+Since the inner class is associated with the instance, we cant have any static
+variable in them. The object of java inner class is part of the outer class and to
+create an instance of the inner class we first need to create an instance of 
+the outer class. A java inner class can be instantiated with the following statemnet:
+    OuterClass outerObj = new OuterClass();
+    InnerClass innerObj = puterObj.new InnerClass();
+
+There are two special kinds of inner classes: 
+1) Local Inner Class
+   If a class is defined in a method body then it is called local inner class. 
+   Since the local inner class is not associated with object we cant use private, 
+   public or protected modifiers with it: the only allowed modifiers are abstract
+   or final. 
+   A local inner class can access all the members of the enclosing class and local
+   final variables in the scope it is defined, but it cannot modify them. 
+   A local inner class can be defined as follows: 
+        public void print(){
+            class Logger{
+                // stuff
+            }
+            // instantiate logger to use it in print
+            Logger logger = new Logger(); 
+            // stuff
+        }
+   Mind that we can define a local inner class in any block, but in this case the
+   scope of the class will be very limited.
+
+2) Anonymous Inner Class
+A local inner class without a name is called anonymous inner class. An anonymous 
+inner class is defined and instantiated in a single statement. 
+This classes always extend a class or implement an interface. Since an anonymous class
+has no name it is not possible to define a constructor for it. 
+An anonymous inner class is accessible only in the point where it is defined.

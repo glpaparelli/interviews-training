@@ -1,0 +1,26 @@
+Running Example of the Factory DP 
+
+The Factory is a creational design pattern that talks about the creation of objects. 
+With the factory we can exploit an interface (or abstract class) for creating objects
+and then let the subclasses decide which class to instantiate. 
+
+- Advantage of Factory 
+  1) factory method design pattern allows subclasses to choose the type of 
+     objects to create 
+  2) it promotes loose-coupling by eliminating the need to bind specific classes into
+     the code. That means that the code interacts solely with the resultant interface
+     so that it will work with any classes that implements that interface 
+
+- Usage of Factory
+  1) when a class doesn't know what subclass will be required to create
+  2) when a class wants that its sub-classes specify the objects to be created
+  3) when the parent classes choose the creation of objects to its sub-classes
+
+This running example: Calculate Elettrical Bill
+ - we are going to create a Plan abstract class and concrete classes that extends the Plan abstract class. 
+   A factory class GetPlanFactory is defined as a next step.
+ - GenerateBill class will use GetPlanFactory to get a Plan object. I
+   t will pass information (DOMESTICPLAN / COMMERCIALPLAN / INSTITUTIONALPLAN) 
+   to GetPalnFactory to get the type of object it needs.
+
+> check the UML image for better understanding

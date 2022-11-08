@@ -1,0 +1,30 @@
+Running Example of the Prototype Design Pattern
+
+Prototype DP says that cloning an existing object instead of creating a new one
+can also be customized as per the requirement. 
+
+- Advantage of Prototype
+  1) it reduces the need of subclasses
+  2) it hides the complexities of of creating objects
+  3) the clients can get new objects without knowing which type of object
+     it will be
+  4) it lets you add and remove objects at runtime
+
+- Usage of Prototype 
+  1) when the classes are instantiated at runtime
+  2) when the cost of creating an object is expensive or complicated
+  3) when you want to keep the number of classes at minimum
+  4) when the client needs to be unaware of object creation and representation
+
+This Running Example: Employee
+- we are going to create an interface Prototype that contains the method getClone()
+  of Prototype type
+- then we create a concrete class EmployeeRecord which implements the Prototype 
+  interface that does the cloning of EmployeeRecord objects
+- we use the class PrototypeDemo to actually see in action the prototype DP
+
+> check the UML diagram for better understanding
+
+- question: why can't I simply override the method clone inherited from Object? 
+    - note: clone() is by default a shallow copy (only primitives data is cloned)
+    - https://stackoverflow.com/questions/1563010/is-the-prototype-design-pattern-really-just-clone

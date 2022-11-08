@@ -1,0 +1,15 @@
+Running Example of the Astract Factory DP
+
+An abstract factory provides an interface for creating families of related or 
+dependant objects without specifying their concrete classes. 
+In other words this design pattern allows us to create objects that follow a 
+general pattern. 
+
+In this example we'll create two implementations of the factory method design
+pattern: AnimalFactory and ColorFactory. 
+After that we will manage to access to them using an abstract factory called 
+AbstractFactory
+
+> check the UML image for better understanding
+- FactoryProvider gives type warning about the raw type
+    - might be usefull in some scenarios but here is skipped
