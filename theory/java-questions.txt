@@ -1,0 +1,92 @@
+- questions from shorturl.at/dEOP8
+
+1) WHICH TWO METHODS AN OBJECT MUST IMPLEMENT TO BE USED AS KEY IN AN HASHMAP?
+   In order to use any object as a key in HashMap the class must implement 
+   equals() and hashcode(). 
+
+2) WHAT IS AN IMMUTABLE OBJECT? CAN YOU WRITE AN IMMUTABLE OBJECT?
+   Immutable classes are java classes whose objects can not be modified once 
+   created. Any modification in an immutable object result in a brand new 
+   object. 
+   Strings are immutable in Java, and in fact a string can not be changed. 
+   Most of the times an Immutable is also final: 
+   - an immutable class is immutable to prevent any sub-classes to override 
+     methods that can compromise the immutability nature of the objects. 
+   - an actual object can be declared as final so that the reference can not 
+     be changed, as it can't be changed its value
+        - final String s = "hello" 
+            - can't modify the content of the string 
+            - can't write s = "another", because s is final: it can only 
+              point to that string in memory
+   
+   A way to achieve the same functionality of an immutable object by making its 
+   members non final but private and not modifying them if not in the constructor
+
+3) WHAT IS THE DIFFERENCE BETWEEN CREATING A STRING WITH NEW AND AS LITTERAL?
+   When we create a string with the new() operator it is created in the heap and
+   not added into the string pool.
+   Using a string literal creates the string in the string pool itself, which 
+   exists in PermGen area of heap. 
+
+4) WHAT IS DIFFERENCE BETWEEN STRINGBUFFER AND STRINGBUILDER?
+   StringBuffer methdos are synchronized while StringBuilder is not syncronyzed.  
+
+5) WRITE CODE TO FIND THE FIRST NON REPEATED CHARACTER IN A STRING
+   FUCiaS.java in practice.problems.string
+
+6) WHAT IS THE DIFFERENCE BETWEEN ARRAYLIST AND VECTOR?
+   ArrayList-vs-Vector.txt in theory/java-insights
+
+7) WHAT IS THE DIFFERENCE BETWEEN FACTORY AND ABSTRACT FACTORY PATTERN?
+   Abstract Factory provides one more level of abstraction. Consider different
+   factories each extended from an abstract factory and responsible for creation
+   of different hierarchies of objects based on the type of factory. 
+
+8) WHAT IS SINGLETON? IS IT BETTER TO MAKE THE WHOLE METHOD SYNCHRONIZED OR 
+   ONLY CRITICAL SECTION SYNCHRONIZED?
+   Singleton in java is a class with just one instance in the whole java 
+   application. For example java.lang.Runtime is a singleton class.
+
+9) CAN YOU WRITE CODE FOR ITERATING OVER HASHMAP IN JAVA 7 AND IN JAVA 8?
+   IoHM.java in practice.questions
+
+10) WHEN YOU OVERRIDE HASHCODE() AND EQUALS()
+    Whenever is necessary, main examples are: 
+      - I want to use the object as a key in an hashmap
+      - I want to use .equals() for comparing objects
+      - I want to use .clone() for cloning that object
+
+11) WHAT WILL BE THE PROBLEM IF YOU DO NOT OVERRIDE HASHCODE()?
+    Following from the previous question. 
+
+12) USING SINGLETON IS IT BETTER TO SYNCHRONIZE THE CRITICAL SECTION OF 
+    GETINSTANCE() OR THE WHOLE METHOD? 
+    Pretty much as always: the smaller the synchronized part of the code is the better,
+    so the answer is only the critical section
+
+13) IF A METHOD THROWS NULLPOINTEREXCEPTION CAN WE OVERRIDE IT WITH A METHOD
+    THAT THROWS RUNTIMEEXCEPTION?
+    Yes, you can override with every kind of exceptions that are higher in 
+    the hirerchy than NullPointerException. 
+    This can be done only with unchecked exceptions tho.
+
+14) HOW DO YOU ENSURE THAT N THREAD CAN ACCESS N RESOURCES WITHOUT DEADLOCK
+    There are two main points: 
+      - make critical sections synchronized
+      - order of resource acquisition: 
+         - the first that get a resource should be the first to release it
+         > if you aquire resources in a particular order and release it in 
+           that order but reversed you can prevent deadlock 
+
+15) DIFFRENCES BETWEEN SLEEP() AND WAIT()
+    - sleep() do not release the lock, while wait() release the lock
+    - sleep() is in java.lang.Thread class and hence it can be called on Thread
+      objects while wait() is in java.lang.Object class, thus it can be called 
+      on any object
+    - sleep() is interruped only by exception or by the end of the passed time, 
+      wait() can be awake using notify() or notifyAll()
+    - each object has a wait() (since it is in Object) and that is for inner-
+      comunication between threads. The sleep() method is a static method of the
+      Thread class. 
+      There is a common mistake to write t.sleep(100) because sleep() is an instance
+      method of Thread, but sleep will pause the current running thread, NOT t!

@@ -1,4 +1,5 @@
 package problems.array;
+import static org.junit.Assert.assertTrue;
 /*
  * > PROBLEM 169 (easy): Majority Element
  *   Given an array "nums" of size n, return the majority element.
@@ -24,8 +25,8 @@ package problems.array;
  */
 public class MajorityElement {
     public static void main(String[] args) {
-        assert(solution(new int[]{3, 2, 3}) == 3);
-        assert(solution(new int[]{2,2,1,1,1,2,2}) == 2);
+        assertTrue(solution(new int[]{3, 2, 3}) == 3);
+        assertTrue(solution(new int[]{2,2,1,1,1,2,2}) == 2);
     }
 
     public static int solution(int[] nums){

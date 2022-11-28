@@ -1,0 +1,40 @@
+-- SUPER FAST REVIEW OF ALL THE MODIFIERS -- 
+
+- MODIFIERS ARE DIVIDED IN TWO GROUPS -
+    1) access modifiers: controls the access level
+    2) non-access modifiers: provide other functionality
+
+1) ACCESS MODIFIERS
+    > FOR CLASSES
+        - PUBLIC: the class is accessible by any others
+        - default: without any keyword before declaring a class, the class is
+          accessible only by clesses in the same package. 
+
+    > FOR ATTRIBUTES, METHODS AND CONSTRUCTORS
+        - PUBLIC: the code is accessible for all classes
+        - PRIVATE: the code is accessible only within the declared class
+        - PROTECTED: the code is accessable by classes in the same package and by
+          its subclasses
+        - default: without any keyword, the code is accessible only un the same 
+          package. 
+    
+2) NON-ACCESS MODIFIERS
+    > FOR CLASSES
+        - FINAL: the class cannot be inherited by other classes
+        - ABSTRACT: the class cannot be used to create objects. To access an abstract
+          class it must be inherited from an another class. 
+            - an abstract class is kinda an interface: you can declare methods "abstract"
+              and leave the implementations to the subclasses or implement the method 
+              in the abstract class and this implementation will be inherited by 
+              the "sub"classes.
+
+    > FOR ATTRIBUTES AND METHODS
+        - FINAL: attributes cannot be modified, methods cannot be overridden
+        - STATIC: attributes and methods belongs to the class, not to the single
+          instance of the class 
+        - ABSTRACT: can only be seen on methods in abstract classes, see up
+        - TRANSIENT: attributes and methods are skipped when serializing the 
+          object
+        - SYNCHRONIZED: methods can only be accessed by one thread at a time
+        - VOLATILE: the value of an attribute is not cached thread-locally, and 
+          is always read from the "main memory"

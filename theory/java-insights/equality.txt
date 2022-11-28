@@ -1,0 +1,67 @@
+-- SIMPLE REMINDER ON EQUALITY CHECKS --
+
+- RUNNING EXAMPLE ON STRINGS
+> == operator checks "object equality". The == compares reference or memory 
+  location of objects whether they point to the same location or not. 
+> equals() is for content equality or "functional equalty". 
+
+In simple terms: == checks if both objects point to the same memory location whereas
+.equals() evaluates the comparioson of values in the objects!
+
+example 1: Simple Checks
+public static void main(String[] args){
+   String s1 = "hello"; 
+   String s2 = s1; 
+   String s3 = "hello";
+
+   String s4 = new String("hello");
+   String s5 = new String("hello");
+
+   System.out.println(s1 == s2); // ok
+   
+   System.out.println(s1 == s3); // true!
+   System.out.println(s4 == s5); // false!
+
+   System.out.println(s1.equals(s2)); // ok, an object is equal to itself basically
+   System.out.println(s1.equals(s3)); // they are functionally equal     
+}
+
+example 2: Tricky Checks
+public final class A{
+   public static String s; 
+   public A(){
+      this.s = "hello";
+   }
+}
+public final class B{
+   public String B; 
+   public B(){
+      this.s = "hello";
+   }
+}
+...
+public static void main(String[] args){
+   A a1 = new A();
+   A a2 = new A();
+
+   assert(a1 == a2); // error, a1 and a2 are two different objects
+   assert(a1.s == a2.s); // ok: s is static, and both objects points to s
+   assert(a1.s.equals(a2.s)); // ok: both strings says "hello"
+
+   B b1 = new B();
+   B b2 = new B(); 
+
+   assert(b1 == b2); // error: b1 and b2 are two different objects
+   assert(b1.s == b2.s); error: two different strings in memory
+   assert(b1.s.equals(b2.s)); // ok: both strings says "hello" 
+}
+
+
+- MORE GENERALLY 
+1) .equals() is an inherited method. If no one in the hierarchy has redefined equals 
+   the method is the one from the ultimate parent class Object, which is, by design, 
+   the same as ==
+2) when overrding .equals() one has to remember to override also .hashCode().
+   As per API the result returned from .hashCode() for two objects MUST be the same
+   if their equals methods show that they are equivalent. 
+   The converse is not necessarly true.

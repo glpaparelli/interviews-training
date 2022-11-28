@@ -78,7 +78,7 @@ public class MWS {
 
         // look for the chars only in filteredS instead of entire s: this reduce the search
         while(right < filteredS.size()) {
-            char c = filteredS.get(right).getValue();
+            char c = filteredS.get(right).getSecond();
             wDict.put(c, wDict.getOrDefault(c, 0) + 1);
 
             if(tDict.containsKey(c) && wDict.get(c).intValue() == tDict.get(c).intValue()) 
@@ -86,11 +86,11 @@ public class MWS {
             
             // try and contract the window till the point where it ceases to be 'desirable'
             while (left <= right && formed == required) {
-                c = filteredS.get(left).getValue();
+                c = filteredS.get(left).getSecond();
 
                 // save the smallest window until now.
-                int end = filteredS.get(right).getKey();
-                int start = filteredS.get(left).getKey();
+                int end = filteredS.get(right).getFirst();
+                int start = filteredS.get(left).getFirst();
                 if(result[0] == -1 || end - start + 1 < result[0]) {
                     result[0] = end - start + 1;
                     result[1] = start;

@@ -1,0 +1,47 @@
+-- On exceptions: CHECKED vs UNCHECKED --
+
+> duh: exception is an unwanted or unexpected event, which occurs during the
+  execution of a program
+
+- TWO TYPES OF EXECPTIONS -
+1) checked
+2) unchecked
+
+- CHECKED 
+A checked exception in Java represents a predictable, erroneous situation
+that can occur even if a software library is not used as intended. 
+
+For example, if a developer tries to access a file, the Java IO library forces
+them to deal with the checked FileNotFoundException. 
+The developers of the Java IO API anticipated that attempting to access 
+a file that does not exist would be a relatively common occurrence, so they 
+created a checked exception to force a developer to deal with it.
+
+These are the execptions that are checked at compile time. If some code within 
+a method throws a checked exception then the method must either handle the 
+exception or it must specify the exception using the keyword "throws".
+
+In checked exception there are two types: 
+> fully checked: all the child of a fully checked excpetion are also checked. 
+  IOException is an example of fully checked. 
+> partially checked: not all the child of a partially checked exception are 
+  checked exception. 
+  The "Exception" is partially checked since some of its child are fully checked 
+  and others are not checked. 
+
+- UNCHECKED
+In contrast to a checked exception, an unchecked exception represents an error
+in programming logic, not an erroneous situation that might reasonably occur
+during the proper use of an API.
+
+Because the compiler can't anticipate logical errors that arise only
+at runtime, it can't check for these types of problems at compile time. 
+That's why they are called "unchecked" exceptions.
+
+These are the exceptions that are not checked at compile time. In Java, exceptions
+under Error and RuntimeException are unchecked exceptions, everything else under
+throwable is checked. 
+  - NullPointerException, IllegalArgumentException, ...
+    are exampels of unchecked: these exceptions are not checked at compile time 
+    (and in fact the IDE will never tell you that a statement will throw that 
+    exception)

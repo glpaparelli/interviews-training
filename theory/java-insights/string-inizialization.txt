@@ -1,0 +1,23 @@
+-- REMINDER ON STRINGS INIZIALIZATION --
+> duh: in Java a string is an object that represents a sequence of characters
+  or char values. The java.lang.String class is used to create a Java String object
+
+- TWO WAYS TO CREATE A STRING OBJECT
+
+1) BY STRING LITERAL: java string literal is creaded by using double quotes. 
+    - String s = "hello";
+2) BY new KEYWORD: java String is created by using the keyword "new"
+    - String s = new String("hello");
+   Using "new" are created two objects (one in the String Pool and one in the Heap), 
+   plus one reference where the variable will refer to the object in the heap.
+
+> JAVA STRING POOL
+The java string pool refer to collection of strings which are stored in heap memory. 
+In this, whenever a new object is created the JVM checks in the String pool whether
+the object is already present in the pool or not. 
+If it is present then same reference is returned to the variable. 
+    - example: 
+        String s = "hello";
+        String s2 = "hello";
+        System.out.println(s == s2); // true: s2 points to s!
+If it is not present a new objct is actually allocated and the reference is returned.

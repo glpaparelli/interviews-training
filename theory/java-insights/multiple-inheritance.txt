@@ -1,0 +1,21 @@
+-- ON MULTIPLE INHERITANCE -- 
+
+Java support multiple inheritance by supporting multiple implementations 
+of interfaces: a class can implemenet more than one interface.
+
+Hoewer a class cannot extend more than one class because it can lead to 
+the diamond problem and rather than providing complex ways to solve it 
+there are better ways to achieve multiple inheritance. 
+
+- exmaple of diamond problem: 
+
+                    class A
+                   /       \
+                  /         \
+              class B     class C
+                   \       /
+                    \     /
+                    class D
+
+if class B and class C define the same method foo(). If an object of type D 
+call super.D() which method is called? 

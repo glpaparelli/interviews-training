@@ -1,0 +1,76 @@
+-- HASHMAP IN DETAIL -- 
+
+> How HashMap works in JAVA
+HashMap works on the principle of hashing. To understand hashing 
+we first review the following three concepts 
+1) hash function 
+2) hash value
+3) bucket
+
+- the hash value is the value (an int) returned by the hash function, which 
+  is called hashCode() 
+    - public int hashCode() 
+- an hash function is used to create an hash of something. The hash is a 
+  "KINDA unique" code (in this case an int) that is "instrinsic" of the hashed
+  item
+
+- a bucket is used to store key-value pairs. A bucket can have multiple key-value.
+  In HashMap we use simple linked lists to store objects. 
+
+- the method get(K key) in HashMap calls hashCode on key and applies the returned 
+  hashValue to its own static hash function to find a bucket location 
+  (backed as array) where keys and values are stored in form of a nested class 
+  called Entry (Map.Entry).
+   - BOTH key AND value are stored in the bucket as a form of Entry object
+
+- whenever we call get(K key) first it is checked that key is null or not. 
+  There can only ne ONE null key in the map
+    - if key is null then we get always the index 0
+
+- if key is not null then get(K key) will call the the "inner" hash function
+    - we invoke get(K key)
+    - key is not null
+    - of key we get an hash using the method hashCode of the key object
+        - int hashValue = key.hashCode();
+    - then an inner hash function is invoked on the hashValue
+        - int hash = hash(hashValue);
+  this is done as defense to poor hash function in the hashCode() method (which
+  is overriden by the user of the map, hence it could be a bad hash function)
+
+- the true hash value is used to find the the bucket location at which the entry
+  object is stored. 
+
+> An HashMap can be seen as an array of lists of entry (pairs K-V)
+    - a bucket is a certain element of the array (a position of the array)
+
+- WHAT HAPPENS IF TWO DIFFERENT KEYS HAVE THE SAME HASH? 
+  The equals() method is the key here. The bucket is a linked list (mind that
+  HashMap not uses LinkedList but a custom, simplier, implementation). 
+  We simply traverse the list using the .equals() to find a match between the
+  requested key and the stored keys. Then the corresponding value is returned
+
+- WHAT HAPPENS IF WE USE AN ALREADY USED KEY?
+  The entry is updated and to that key will now correspond the new value!
+  - using an existing key result in an overriding of the value
+
+- HOW WE MEASURE THE PERFORMANCE OF HASHMAP? 
+  According to the Oracle Java docs an instance of HashMap has two parameters
+  that affects its performance: initial capacity and load factor. 
+  - capacity: number of buckets of the HashMap and the initial capacity is simply
+    the capacity at the time the hashmap is created
+  - load factor: measure how full the hash table is allowed to get before its 
+    capacity is automatically increased. When the number of entries in the 
+    table exceed the product of the load factor and current capacity the table 
+    is rehashed (that is: the internal data structure is rebuilt).
+        - current capacity and number of entries are different because 
+          we have collisions!!
+        - the default value of load factor is 0.75
+
+- WHAT IS THE TIME COMPLEXITY OF HASHMAP GET() and PUT()?
+  Both implementations perform in constant time (O(1)) assuming that the hash 
+  function disperses the elements properly along the buckets.  
+
+>> SIDE NOTE: 
+   HashTable is roughly equivalent to HashMap but HashMap, unlike HashTable, 
+   is unsynchronized and it permits nulls
+   

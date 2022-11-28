@@ -1,0 +1,45 @@
+- INTRODUCTION
+A graph is a structure containing a set of objects (nodes or vertices) where there can be edges
+between these nodes/vertices. Edges can be directed or undirected and can optionally have values
+(a weighted graph). Trees are undirected graphs in which any two vertices are connected by exactly
+one edge and there can be no cycles in the graph. 
+
+Graphs are commonly used to model relationship between unordered entities such as
+- friendship between people: each node is a person and edges between nodes represent that these two 
+  people are friends 
+- distances between locations: each node is a location and the edge between nodes represent that these
+  two locations are connected. The value of the edge represent the distance.
+
+- GRAPH REPRESENTATIONS
+You can be given a list of edges and you have to build your own graph from the edges so that you can 
+perform a traversal on them. The common graph representations are
+- adjacency matrix
+- adjaceny list
+- hash table of hash table
+
+Using a hash table of hash table would be the simplest approach during interviews. The other two
+represnetations are uncommon during interviews. 
+
+- TIME COMPLEXITY
+|V| is the number of vertices and |E| is the number of edges
+    1) DFS: O(|V| + |E|)
+    2) BFS: O(|V| + |E|)
+    3) topological sort: O(|V| + |E|)
+
+- THINGS TO LOOK OUT DURING INTERVIEWS
+    1) a tree-like diagram could very well be a graph that allows for cycles and a naive recursive
+       solution would not work. In that case you will have to handle cycles and keep a set of visited 
+       nodes when traversing
+    2) ensure you are correctly keeping track of visited nodes and not visiting each node more than 
+       once. Otherwise your code could end up in an infinite loop
+
+- CORNER CASES
+    - empty graph
+    - graph with one or two nodes
+    - disjoint graphs
+    - graph with cycles
+
+- GRAPH SEARCH ALGORITHMS
+    - common: BFS, DFS
+    - uncommon: topolgical sort, dijikstra's algorithm
+    - almost never: bellman-ford, prim's algorithm, ... 

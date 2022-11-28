@@ -8,10 +8,9 @@ import java.util.Map;
  * solutions since copy&paste into leetcode would not work
  */
 public class Utils {
-    
-    //used to test tricks
-    public static void main(String[] args) {
-    }
+    //tricky checks
+    public static void main(String[] args) { 
+    }   
 
     /**
      * Remove all non-alphanumeric chars from a string s
@@ -20,6 +19,27 @@ public class Utils {
      */
     public static String removeNonAlphanumericChars(String s){
         return s.replaceAll("[^a-zA-Z0-9]", "");
+    }
+
+    /**
+     * Convert an int array to a list of integer
+     * @param array
+     * @return
+     */
+    public static List<Integer> intArrayToListOfInteger(int[] array){
+        return Arrays.stream(array).boxed().toList();
+    }
+
+    public static Integer[] intArrayToIntegerArray(int[] array){
+        return Arrays.stream(array).boxed().toArray(Integer[]::new);
+    }
+
+    public static int[] listOfIntegerToIntArray(List<Integer> list){
+        return list.stream().mapToInt(i->i).toArray();
+    }
+
+    public static Integer[] listOfIntegerToIntegerArray(List<Integer> list){
+        return list.stream().toArray(Integer[]::new);
     }
 
     /**

@@ -1,0 +1,75 @@
+-- ON CLONING ARRAYS -- 
+
+- The System Class - 
+Let's start with the core Java Library. System.arraycopy() copies an array from 
+a source array to a destination array, starting the copy action from the source
+position to the target position until the specified length. 
+
+The number of elements copied to the target array equals the specified length. It
+provides an easy way to copy a subsequence o an array to another. 
+
+example: 
+int[] array = {1,2,3}; 
+int[] copiedArray = new int[3];
+
+// void arraycopy(src, srcPos, dest, destPos, lenght)
+System.arraycopy(array, 0, copiedArray, 0, 3);
+
+- The Arrays Class -
+The Arrays class also offer multiple methods: 
+
+example 1: copyOf
+int[] array = {1,2,3,4};
+// int[] copyOf(src, newLength)
+int[] copiedArray = Arrays.copyOf(array, 4)
+
+> note: the Arrays class uses Math.min() to get the minimum between the size of the
+  src array and the passed newLength to get the size of the new copied array.
+
+example 2: copyOfRange()
+int[] array = {1,2,3,4};
+// int[] copyOf(src, from, to)
+int[] copiedArray = Arrays.copyOfRange(array, 1, 4);
+
+>> mind that both copyOf and copyOfRange DO A SHALLOW COPY of objects if not 
+applied on array of non-primitive types!
+    > check this case:
+        String[] sArray = {"ciao", "dio", "cane"};
+        
+        String[] sArrayCopied = Arrays.copyOf(sArray, 3);
+
+        for(int i = 0; i < 3; i++)
+            System.out.println(sArray[i] == sArrayCopied[i]); // all true!! shallow!
+
+        String[] sArrayDeepCopied = new String[3];
+        for(int i = 0; i < 3; i++)
+            sArrayDeepCopied[i] = new String(sArray[i]);
+        
+        for(int i = 0; i < 3; i++){
+            System.out.println(sArray[i] == sArrayDeepCopied[i]); // all false!
+            System.out.println(sArray[i].equals(sArrayDeepCopied[i])); // all true!
+        }
+
+- Object.clone() - 
+Object.clone() is inherited from the Object class in an array! 
+> remember that arrays are objects!
+
+example: 
+int[] array = {1,2,3};
+int[] copiedArray = array.clone();
+
+> copiedArray and array are clones but they hold different references, editing 
+  one will no affect the other. 
+> remember that clone() creates a shallow copy for non primitive types even if the
+  enclosed object's class implements the Clonable interface and override the clone()
+  method!
+
+- Stream API - 
+String[] sArray = {"ciao", "dog", "cat"};
+// <A> A[] toArray(IntFunction<A[]> generator)
+// returns an array containing the elements of this stream using the provided
+// generator function to allocate the returned array
+// > generator: a function which produces a new array of the desired type
+String[] sCopiedArray = Arrays.stream(sArray).toArray(String[]::new);
+
+> for non-primitive types this also do a shallow copy of objects!

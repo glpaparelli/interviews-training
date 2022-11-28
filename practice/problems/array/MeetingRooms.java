@@ -2,6 +2,11 @@ package problems.array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import datastructures.Interval;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 /*
  * > PROBLEM 252 (easy): Meeting Rooms
  *   Given a list of meeting time interval consisting of start and end times
@@ -22,15 +27,29 @@ public class MeetingRooms {
         test1.add(new Integer[]{5, 10});
         test1.add(new Integer[]{15, 20});
 
+        List<Interval> test1Interval = new ArrayList<>();
+        test1Interval.add(new Interval(0, 30));
+        test1Interval.add(new Interval(5, 10));
+        test1Interval.add(new Interval(15, 20));
+
         List<Integer[]> test2 = new ArrayList<>();
         test2.add(new Integer[]{0, 10});
         test2.add(new Integer[]{12, 20});
         test2.add(new Integer[]{25, 29});
 
-        assert(!solution(test1));
-        assert(solution(test2));
+        List<Interval> test2Interval = new ArrayList<>();
+        test2Interval.add(new Interval(0, 10));
+        test2Interval.add(new Interval(12, 20));
+        test2Interval.add(new Interval(25, 29));
+
+        assertTrue(solution(test1));
+        assertFalse(solution(test2));
+
+        assertTrue(intervalSolution(test1Interval));
+        assertFalse(intervalSolution(test2Interval));
     }
 
+    // returns true if intervals overlaps 
     public static boolean solution(List<Integer[]> meetings){
         Collections.sort(meetings, (a, b) -> Integer.compare(a[0], b[0]));
 
@@ -46,6 +65,23 @@ public class MeetingRooms {
         if(m1[0] <= m2[1] && m1[1] >= m2[0])
             return true;
     
+        return false;
+    }
+
+    public static boolean intervalSolution(List<Interval> meetings){
+        Collections.sort(meetings, (a, b) -> Integer.compare(a.start, b.start));
+
+        for(int i = 0; i < meetings.size() -1; i++)
+            if(checkOverlap(meetings.get(i), meetings.get(i+1)))
+                return true; 
+
+        return false; 
+    }
+
+    private static boolean checkOverlap(Interval i1, Interval i2) {
+        if(i1.start <= i2.end && i1.end >= i2.start)
+            return true; 
+        
         return false;
     }
 }

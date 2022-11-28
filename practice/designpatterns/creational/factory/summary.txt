@@ -17,10 +17,11 @@ and then let the subclasses decide which class to instantiate.
   3) when the parent classes choose the creation of objects to its sub-classes
 
 This running example: Calculate Elettrical Bill
- - we are going to create a Plan abstract class and concrete classes that extends the Plan abstract class. 
+ - we are going to create a Plan abstract class and concrete classes that extends
+   the Plan abstract class. 
    A factory class GetPlanFactory is defined as a next step.
- - GenerateBill class will use GetPlanFactory to get a Plan object. I
-   t will pass information (DOMESTICPLAN / COMMERCIALPLAN / INSTITUTIONALPLAN) 
+ - GenerateBill class will use GetPlanFactory to get a Plan object. It 
+   will pass information (DOMESTICPLAN / COMMERCIALPLAN / INSTITUTIONALPLAN) 
    to GetPalnFactory to get the type of object it needs.
 
 > check the UML image for better understanding

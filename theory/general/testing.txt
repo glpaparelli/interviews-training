@@ -1,0 +1,51 @@
+-- JUST TWO WORDS ON TESTING --
+
+1) UNIT TEST
+   Unit tests are very low level and close to the source of an application. 
+   They consist in testing individual methods, functions, modules, ... aka
+   unit of code (hence the name). 
+   They are very easy to automate:
+       - maven offer the possibility to run all the tests before compiling
+       - IDEs often have a button that run all the tests
+       - automatizable through java reflection 
+       - ...
+
+2) INTEGRATION TEST
+   Integration tests verify that different modules or services used by your 
+   application work well together.
+   This kind of tests are more expensive to run since they require multiple 
+   parts of the application to be up and running
+
+3) FUNCTIONAL TEST
+   Functional tests focus on the buisness requirements of the application. 
+   They only verify the output of an action and do not check the intermediate 
+   states of the system when performing that action
+   
+   There is sometimes a confusion between integration tests and functional tests
+   as they both require multiple components to interact with each other. 
+   The difference is that an integration test may simply verify that you can query
+   the database while a functional test would expect to get a specific value from
+   the database, as efined by the product requirements.
+
+4) END-TO-END TEST
+   End-to-end testing replicates a user behavior with the software in a complete
+   application environment. It verifies that various user flows work as expected
+   and can be as simple as loading a web page or complex as verifying mail 
+   notifications, ...
+
+5) ACCEPTANCE TESTING
+   Acceptance tests are formal tests that verify if a system satisfies buisness
+   requirements. They require the entire application to be running while testing 
+   and focus on replicating user behaviours. 
+   They can also go further and measure the performance of the system and reject
+   changes if certain goals are not met.
+
+6) PERFORMANCE TESTING
+   Performance tests evaluate how a system performs under a particular workload. 
+   These tests help to measure the reliability, speed, scalability and 
+   responsivness of the application. 
+
+7) SMOKE TESTING
+   Smoke tests are basic test that check the basic functionality of an application. 
+   They are ment to be quick to execute and their goal is to give you the assurance
+   that the major features of your system are working as expected.

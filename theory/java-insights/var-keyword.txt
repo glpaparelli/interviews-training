@@ -1,0 +1,25 @@
+-- ON VAR KEYWORD IN JAVA afap --
+The var keyword was introduced in Java 10. Type inference is used in var keyword
+in which detects automatically the datatype of a variable based on the surrounding 
+context. 
+
+1) we can declare any datatype with the var keyword
+
+2) var can be used in a local variable declaration
+
+3) var cannot be used in an instance and global and variable 
+   declaration
+
+4) var cannot be used as a generic type
+    - List<var> list = new ArrayList<>() // compile time error
+
+5) var cannot be used with the generic type
+    - var<Integer> list = new ArrayList<>(); // compile time error
+    - var list = new ArrayList<Integer>(); // this is valid
+
+6) var cannot be used without explicit initialization
+
+7) var cannot be used with lambda expressions
+
+8) var cannot be used for method parameters and return type
+

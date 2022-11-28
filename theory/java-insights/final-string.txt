@@ -1,0 +1,22 @@
+- Does it make sense to define a final String? - 
+shorturl.at/emsM7
+
+"String are constant; their values cannot be changed after they are created"
+> does this mean that a creating a String final is useless? final is redundant?
+
+The String object is immutable but the reference to that string can change. 
+
+example: 
+    String s = "hello" 
+
+Now, "hello" can not be changed in memory but we can reassign the value held by the 
+variable s, to make it reference a different string!
+    s = "goodbye"
+
+If we create the following
+    final String s = "hello" 
+then s cannot even be reassigned to point to another string, the statement
+    s = "goodbye"
+will result in a compile-time error and the ide will give you "the final ... can not
+be reassigned"
+

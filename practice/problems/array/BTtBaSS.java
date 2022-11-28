@@ -1,4 +1,5 @@
 package problems.array;
+import static org.junit.Assert.assertTrue;
 /*
  * > PROBLEM 121 (easy): Best Time to Buy and Sell Stock
  *   You are given an array "prices" where prices[i] is the
@@ -18,8 +19,8 @@ package problems.array;
  */
 public class BTtBaSS {
     public static void main(String[] args) {
-        assert(solution(new int[]{7,1,5,3,6,4}) == 5);
-        assert(solution(new int[]{7,6,4,3,1}) == 0);
+        assertTrue(solution(new int[]{7,1,5,3,6,4}) == 5);
+        assertTrue(solution(new int[]{7,6,4,3,1}) == 0);
     }
 
     public static int solution(int[] prices){
@@ -27,16 +28,16 @@ public class BTtBaSS {
         int maxProfit = 0;
 
         // we go through every price
-        for(int price : prices)
+        for(int currentPrice : prices)
             // we keep track of the current minimum price
-            if(price < minPrice)
-                minPrice = price;
-            // if the current price is not the minimum price then 
-            // it could be the maximum and it is surely after the 
-            // minimum price: this price improve my profit?
-            else if(price - minPrice > maxProfit)
-                maxProfit = price - minPrice;
-
+            if(currentPrice < minPrice)
+                minPrice = currentPrice;
+            else
+                // if the current price is not the minimum price then 
+                // it could be the maximum and it is surely after the 
+                // minimum price: this price improve my profit?
+                maxProfit = Math.max(maxProfit, currentPrice - minPrice);
+          
         return maxProfit;
     }
 }

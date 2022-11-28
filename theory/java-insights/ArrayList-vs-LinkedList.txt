@@ -1,0 +1,104 @@
+- OVERVIEW (DUH)
+Lists are data structures used for sequential element storage. 
+This means that every element of the list has both a predecessor and a successor 
+(execpt for the first and last element). 
+
+Lists are therefore ordered (unlike Set) collections which also allow duplicates. 
+
+In Java List is an interface under the java.util package. Since it is an interface, 
+it simply provides methdos that need to be overridden in the actual implementation
+class. 
+
+ArrayList and LinkedList are two different implementations of List. 
+Mind that LinkedList also implements the Queue interface.
+
+- UNDER THE HOOD
+> ArrayList: an ArrayList is a resizable array that grows as additional elements are
+  added. This means that ArrayList internally contains an array of values and a counter
+  variable to know the current size at any point. If an element is added the size is 
+  increased, if an element is removed the size is decreased. 
+  ArrayList contains a single array for data storage. 
+
+> LinkedList: a LinkedList is internally a duble-ended queue of mutually-connected
+  elements. The first element points to the second, which points to the third and so on.
+  Since this is a doubly-linked list each element also points to its predecessor. 
+  LinkedList needs a custom data structure for data storage. The custom data structure
+  is a Node. 
+  In order to store an element B is not enough to just store its value as you would
+  with an ArrayList but you also have to set up the pointers.
+  With the LinkedList we can always assume the existance of two pointers: head and tail,
+  that respectively points to the first and last element of the list. 
+
+- COMPARISON: 
+1) Fetching Elements with get()
+    - ArrayList: using the method get(int index). Since under the hood the ArrayList 
+      is a (resizable) array this operation is performed in constant time O(1).
+    - LinkedList: a linked list do not exist in a single place in memory, it contaisn
+      different nodes connected to one another. To fecth an element the list needs to
+      be traversed from the beginning (or from the end) and follow each of the nodes
+      connections until the wanted element is found. 
+      So get(int index) on a linked list is done in linear time O(n) where n is the 
+      size of the list
+
+2) Inserting Elements with add()   
+    - ArrayList: inserting an element at the end is simple: just extend the length by
+      one and insert the element at the end. 
+      However inserting at a given position is a bit trickier. You have to break the
+      array at the place you want to insert, copy everything after that point and 
+      move it to the right and add the new element at that index. 
+      The operation is done in linear time O(n) worst case (say we want to insert at 
+      index 0, the larger the copied part the slower this operation is.)
+    - LinkedList: obvious approach, at most two pointers need to be updated. 
+        - prev.next = newElement
+        - newElement.next = succ
+       While the cost is still linear because reaching the position where the element
+       should be inserted is ineficient (O(n)) adding at an index is way more efficient 
+       with LinkedList
+    
+3) Finding Elements with indexOf()
+    - both LinkedList and ArrayList do pretty much the same thing: full traversal,
+      so the cost is linear O(n)
+
+4) Deleting Elements with remove()
+    - ArrayList: same as add, removing an item at a given index requires to copy 
+      a portion of the arraylist nad reinitialize the array without a value and 
+      shifting the copied part to the left
+    - LinkedList: same ad add, to remove we just "skip" the element by updating 
+      the pointer of the previous element. 
+      We still have to find the element, hence the cost is still linear, but more
+      efficient than arraylist
+
+- COMPARISON SUMMARY 
+    - get element at a specified index: get(int index)
+        - arraylist: O(1)
+        - linkedlist: O(n)
+    - get the first element: getFirst()
+        - arraylist: O(1)
+        - linkedlist: O(1)
+    - get the last element: getLast()
+        - arraylist: O(1)
+        - linkedlist: O(1)
+    - insert an element at a specific position: insert(int index)
+        - arraylist: O(n)
+        - linkedlist: O(n) but more efficient
+    - insert an element at the first position
+        - arraylist: O(n)
+        - linkedlist: O(1)
+    - insert an element at the last position
+        - arraylist: O(1)
+        - linkedlist: O(1)
+    - delete an element at the specified position
+        - arraylist: O(n)
+        - linkedlist: O(n) but more efficient
+    - delete the first element: deleteFirst
+        - arraylist: O(n)
+        - linkedlist: O(1)
+    - delete the last element: deleteLast
+        - arraylist: O(1)
+        - linkedlist: O(1)
+
+- CONCLUSION 
+    > ArrayList: if inserting/removing elements is done lightly and reading 
+      (fetching) elements is very common
+    > LinkedList: if inserting/removing elements is very common and fetching
+      elements at a certain index is done rarely

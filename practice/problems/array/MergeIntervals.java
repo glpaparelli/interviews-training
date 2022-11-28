@@ -1,7 +1,10 @@
 package problems.array;
-import static org.junit.Assert.assertArrayEquals;
+import datastructures.Interval;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
+import static org.junit.Assert.assertArrayEquals;
 /*
  * > PROBLEM: Merge Intervals
  *   Given an array "intervals" where intervals[i] = [start_i, end_i], 
@@ -17,6 +20,13 @@ public class MergeIntervals {
     public static void main(String[] args) {
         int[][] output1 = solution(new int[][]{{1,3},{2,6},{8,10},{15,18}});
         assertArrayEquals(output1, new int[][]{{1,6},{8,10},{15,18}});
+
+        LinkedList<Interval> input1 = new LinkedList<>();
+        input1.add(new Interval(1,3));
+        input1.add(new Interval(2,6));
+        input1.add(new Interval(8,10));
+        input1.add(new Interval(15, 18));
+        solution(input1).forEach(x -> System.out.println(x));
 
         int[][] output2 = solution(new int[][]{{1,4},{4,5}});
         assertArrayEquals(output2, new int[][]{{1,5}});
@@ -51,6 +61,28 @@ public class MergeIntervals {
         for(int i = 0; i < workingRes.size(); i++){
             result[i][0] = workingRes.get(i)[0];
             result[i][1] = workingRes.get(i)[1];
+        }
+        return result;
+    }
+
+    public static List<Interval> solution(List<Interval> intervals){
+        Collections.sort(intervals, (e1, e2) -> Integer.compare(e1.start, e2.start));
+
+        LinkedList<Interval> result = new LinkedList<>();
+        
+        for(Interval interval : intervals){
+            if(result.isEmpty())
+                result.add(interval);
+
+            Interval lastInterval = result.getLast();
+            // this is a collision: the last interval ends 
+            // while the current  interval is still going
+            if(lastInterval.end > interval.start)
+                // we merge the intervals: lastInterval surely starts before the current interval, 
+                // merging means prolunging the lastInterval enough for the current interval to end
+                lastInterval.end = Math.max(lastInterval.end, interval.end);
+            else
+                result.add(interval);
         }
         return result;
     }

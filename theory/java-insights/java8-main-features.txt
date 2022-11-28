@@ -1,0 +1,43 @@
+-- JAVA 8 MAIN FEATURES -- 
+
+The three major features are: 
+ - Introduction of Optional
+ - Defender Methods
+ - Lambda Expressions
+
+- INTRODUCTION OF OPTIONAL -
+Similar to Haskell "Some". 
+The main benefit of Optional is to avoid the NullPointerException. 
+Optional<String> s is an object that may contain a String or it has "a null
+meaning" without the risk of generating the exception. 
+
+- we can create an Optional as follow
+    - Optional<String> s = Optional.of("hello");
+        - the .of() CANT BE NULL, if we want to create an empty Optional we do
+            - Optional<String> empty = Optional.empty()
+        > if we want to create an Optional that wraps a null we can actually do
+            - Optional<String> s = Optional.ofNullable(null);
+
+- s.isPresent() return true if the value inside the optional object is present. 
+    - if we created an Optional with .ofNullable(null) 
+        - isPresent will return false, since no value is present inside
+          the optional object
+        - isEmpty will return true, since inside we have null, which is 
+          nothing
+
+> ton of other methods: get(), getOrElse(), getOrThrow(), map(), filter(), ...
+
+- DEFENDER METHODS -
+In Java 7 a class that implements an interface had to implement all the methods
+defined in the interface. 
+If you wanted to add a method to the interface (even an empty method) you had
+to edit all the "sub"classes, otherwise the code would not even compile. 
+
+Java 8 introduces Default Methods aka Defender Methods. 
+In the interface is possible to define a defender method using the keyword 
+"default" and implement this method directly in the interface. This method 
+will be obv inherited by the implementing class and it can also be overridden. 
+
+- LAMBDA EXPRESSIONS - 
+> they works thanks to the defender methods
+> shorturl.at/tEGH0

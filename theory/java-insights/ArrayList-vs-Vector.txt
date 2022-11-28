@@ -1,0 +1,37 @@
+-- OVERVIEW -- 
+ArratList and Vector both implement the List interface and both use 
+(dynamically resizable) arrays for their internal data structure, much like 
+using an ordinary array. 
+
+-- DIFFERENCES -- 
+1) ArrayList is NOT synchronized, Vector is synchronized.
+
+2) ArrayList increments itself of 50% when the max capacity is reached, 
+   Vector increments itslef of 100% (means it doubles the capacity) when 
+   the capacity is reached
+
+3) ArrayList is not a legacy class while Vector is
+
+4) ArrayList is fast since it is not synchronized, Vector is slow since it is 
+   synchronized i.e. in a multithreading environment, it holds the other treads 
+   in a runnable or non-runnable state until the current thread realeses the 
+   lock on the object.
+
+5) ArrayList uses the Iterator interface to traverse the elements. 
+   Vector uses both the Iterator interface and the Enumeration interface 
+   to traverse the elements
+
+6) ArrayList performance is high while Vector performance is low
+
+7) Multiple threads can work on ArrayList while only one thread can work
+   on Vector (DUH)
+
+-- HOW TO CHOOSE BETWEEN ARRAYLIST AND VECTOR
+1) if multithreading is concerned vectors are often preferable, otherwise 
+   just go with an arraylist
+
+2) if we do not know how much data we will have but we know the rate at which 
+   it grows, Vector has an advantage since we can set the increment value. 
+
+3) arraylist is newer and faste. If we do not have explicit requirements for 
+   using either of them just choose arrylist

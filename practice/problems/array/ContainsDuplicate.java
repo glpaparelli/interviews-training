@@ -1,6 +1,8 @@
 package problems.array;
 import java.util.HashSet;
 import java.util.Set;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 /*
  * > PROBLEM 217 (easy): Contains Duplicate
  *   Given an array "nums" return true if any value appears at 
@@ -14,9 +16,9 @@ import java.util.Set;
  */
 public class ContainsDuplicate {
     public static void main(String[] args) {
-        assert(solution(new int[]{1,2,3,1}));
-        assert(!solution(new int[]{1,2,3,4}));
-        assert(solution(new int[]{1,1,1,3,3,4,3,2,4,2}));
+        assertTrue(solution(new int[]{1,2,3,1}));
+        assertFalse(solution(new int[]{1,2,3,4}));
+        assertTrue(solution(new int[]{1,1,1,3,3,4,3,2,4,2}));
     }
 
     public static boolean solution(int[] nums){

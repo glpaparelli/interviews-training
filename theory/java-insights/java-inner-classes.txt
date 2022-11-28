@@ -7,10 +7,12 @@ In java the nested classes are divided into two types.
 - STATIC NESTED CLASS
 If the nested class is static then it is called static nested class. 
 This kind of class can access only the static members of the outer class
-A static nested class is the as any other top-level class and it is nested 
+A static nested class is as any other top-level class and it is nested 
 only for packaging convinence. 
-A static class object can be created with the following statement: 
-    OuterClass.StaticNestedClass nestedClassObj = new OuterClass.StaticNestedClass();
+A static is used as follow 
+    OuterClass.StaticNestedClass.staticMethod();
+
+> a static nested class is treated as any other nested member of the class
 
 - INNER CLASS 
 Any non-static nested class is known as inner class. An inner class in java is 
@@ -21,7 +23,7 @@ variable in them. The object of java inner class is part of the outer class and 
 create an instance of the inner class we first need to create an instance of 
 the outer class. A java inner class can be instantiated with the following statemnet:
     OuterClass outerObj = new OuterClass();
-    InnerClass innerObj = puterObj.new InnerClass();
+    InnerClass innerObj = outerObj.new InnerClass();
 
 There are two special kinds of inner classes: 
 1) Local Inner Class

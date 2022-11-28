@@ -47,19 +47,16 @@ public class LongestPalindrome {
         int evenChars = 0;
         //Most Frequent Odd Char Counter
         int mfocc = 0;
-
         for(char c : map.keySet()){
             if(map.get(c) % 2 == 0)
                 // this char appear an even number of times: it always has a partner, 
                 // hence we can use it every time to build the longest palindrome
                 evenChars = evenChars + map.get(c);
-
             else{ 
                 // c appear an odd number of times
-
                 // if c appear more than the current mfoc
                 // the current mfoc is no longer the mfoc, hence it can't be used 
-                // as center: we can only used it an even number of times
+                // as center: we can only use it an even number of times
                 if(map.get(c) > mfocc){
                     if(mfocc != 0)
                         evenChars = evenChars + mfocc-1;

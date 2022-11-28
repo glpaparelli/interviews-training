@@ -28,29 +28,17 @@ package designpatterns.creational;
  * 
  * > Mind that this can easly be adapted to allow only N instance of an object
  */
-public class Singleton {
+public final class Singleton {
     // static variable reference to the unique instance of Singleton
     private static Singleton instance = null;
 
-    // here the fields that the instance may have
-    private String key;
-
     // Construcotr: private method restricted to this class itself
-    private Singleton(){
-        key = "singleton example";
-    }
+    private Singleton(){}
 
-    public static Singleton getInstance(){
+    public static synchronized Singleton getInstance(){
         if(instance == null)
             instance = new Singleton();
         
         return instance;
-    }
-
-    public String getKey(){
-        if(instance == null)
-            return "";
-
-        return key;
     }
 }

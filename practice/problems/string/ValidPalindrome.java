@@ -1,4 +1,6 @@
 package problems.string;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 /*
  * > PROBLEM 125 (easy): Valid Palindrome
  *   A phrase is a palindrome if, after converting all uppercase letters into 
@@ -16,9 +18,9 @@ package problems.string;
  */
 public class ValidPalindrome {
     public static void main(String[] args) {
-        assert(solution("A man, a plan, a canal: Panama"));
-        assert(!solution("race a car"));
-        assert(solution(" "));
+        assertTrue(solution("A man, a plan, a canal: Panama"));
+        assertFalse(solution("race a car"));
+        assertTrue(solution(" "));
     }
 
     public static boolean solution(String s){
@@ -26,11 +28,9 @@ public class ValidPalindrome {
             return false;
         
         s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        int i = 0; 
-        int j = s.length()-1;
 
-        while(i < j)
-            if(s.charAt(i++) != s.charAt(j--))
+        for(int i = 0, j = s.length()-1; i <= j; i++, j--)
+            if(s.charAt(i) != s.charAt(j))
                 return false;
             
         return true;
