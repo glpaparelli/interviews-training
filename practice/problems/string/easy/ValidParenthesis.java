@@ -26,7 +26,7 @@ public class ValidParenthesis {
         // list of still opened parenthesis so far in s
         LinkedList<Character> stillOpen = new LinkedList<>();
 
-        // associate to an stillOpen parenthesis the corresponding closing parenthesis
+        // associate to an open parenthesis the corresponding closing parenthesis
         Map<Character, Character> map = new HashMap<>();
         map.put('(', ')');
         map.put('[', ']');
