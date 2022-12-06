@@ -64,6 +64,6 @@ public class BinarySearch {
         if(nums[mid] < target)
             return recSolution(nums, target, mid+1, end);
 
-        return -1;
+        return -1; // never executed
     }
 }
